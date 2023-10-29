@@ -2,14 +2,15 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import Header from '../components/header'
 import Footer from '@/components/footer'
+import Layout from "@/components/layout"
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main className='bg-slate-400 w-screen h-screen m-auto flex flex-col justify-between '>
-      <Header />
-      Home page
-      <Footer />
-    </main>
+    <Layout>
+      <div className="bg-red-500 min-h-[880px] overflow-hidden">
+        <h1>Blog de Viagens</h1>
+      </div>
+    </Layout>
   )
 }
 

@@ -10,7 +10,7 @@ const CustomLink = ({ link, icon }: LinkProps) => {
   return (
     <li className='text-white'>
       <a href={link} target='blank'>
-        <img src={icon} alt='Facebook' className='fill-white stroke-white text-white h-[36px] w-[36px]' />
+        <img src={icon} alt='Facebook' className='fill-white stroke-white text-white h-[24px] w-[24px]' />
       </a>
     </li>
   )

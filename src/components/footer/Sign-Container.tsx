@@ -8,7 +8,7 @@ interface SignProps {
 const Sign = ({ title, author }: SignProps) => {
   return (
     <div>
-      <p className='text-white text-xl font-thin'>{title} <span className='font-bold uppercase'>{author}</span></p>
+      <p className='text-white text-l font-thin'>{title} <span className='font-bold uppercase'>{author}</span></p>
     </div>
   )
 }
