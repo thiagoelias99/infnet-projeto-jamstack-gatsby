@@ -4,9 +4,9 @@ import Search from './search'
 
 export default function index() {
     return (
-        <div className='flex flex-row w-full h-20 justify-between items-center max-w-[1024px] mx-auto'>
+        <header className='flex flex-row w-full h-20 justify-between items-center max-w-[1024px] mx-auto'>
             <Logo />
             <Search />
-        </div>
+        </header>
     )
 }
