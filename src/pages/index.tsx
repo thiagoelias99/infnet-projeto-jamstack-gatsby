@@ -1,5 +1,5 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { graphql, type HeadFC, type PageProps } from "gatsby"
 import Layout from "@/components/layout"
 import Cover from "../images/home-cover.png"
 import Card from '@/components/card'
@@ -7,7 +7,42 @@ import { IPost } from '@/models/Post'
 
 import CardCover from '../images/card-cover-template.png'
 
-const IndexPage: React.FC<PageProps> = () => {
+export const query = graphql`
+    query {
+      allMdx(sort: {frontmatter: {date: DESC}}, limit: 6) {
+        nodes {
+          frontmatter {
+            title
+            slug
+            date
+          }
+          id
+        }
+      }
+    }
+`
+
+interface IQuery {
+  allMdx: {
+    nodes: {
+      frontmatter: {
+        title: string
+        slug: string
+        date: string
+      }
+      id: string
+    }[]
+  }
+}
+
+interface IProps {
+  data: IQuery
+}
+
+
+const IndexPage: React.FC<PageProps> = ({ data }) => {  
+
+  const queryData = data as IQuery
 
   const [posts, setPosts] = React.useState<IPost[]>([
     {
@@ -60,10 +95,22 @@ const IndexPage: React.FC<PageProps> = () => {
         })}
       </section>
 
+      <section>
+        {
+          queryData.allMdx.nodes.map(node => (
+            <li key={node.id}>
+              {node.frontmatter.title}
+            </li>
+          ))
+        }
+      </section>
+
     </Layout>
   )
 }
 
 export default IndexPage
+
+
 
 export const Head: HeadFC = () => <title>Trazler</title>
