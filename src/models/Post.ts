@@ -3,4 +3,5 @@ export interface IPost {
     date: string
     description: string
     cover: string
+    slug: string
 }

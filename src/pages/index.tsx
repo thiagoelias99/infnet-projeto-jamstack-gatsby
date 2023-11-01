@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, type HeadFC, type PageProps } from "gatsby"
+import { graphql, Link, type HeadFC, type PageProps } from "gatsby"
 import Layout from "@/components/layout"
 import Cover from "../images/home-cover.png"
 import Card from '@/components/card'
@@ -9,14 +9,16 @@ import CardCover from '../images/card-cover-template.png'
 
 export const query = graphql`
     query {
-      allMdx(sort: {frontmatter: {date: DESC}}, limit: 6) {
+      allMdx(limit: 6) {
         nodes {
           frontmatter {
             title
             slug
-            date
+            date(locale: "Pt", formatString: "MMMM D, YYYY")
+            cover
           }
           id
+          excerpt
         }
       }
     }
@@ -29,8 +31,10 @@ interface IQuery {
         title: string
         slug: string
         date: string
+        cover: string
       }
       id: string
+      excerpt: string
     }[]
   }
 }
@@ -40,7 +44,7 @@ interface IProps {
 }
 
 
-const IndexPage: React.FC<PageProps> = ({ data }) => {  
+const IndexPage: React.FC<PageProps> = ({ data }) => {
 
   const queryData = data as IQuery
 
@@ -81,36 +85,31 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
     <Layout>
       <figure className='flex max-h-[900px] h-[900] relative'>
         <div className='w-full absolute top-[40%] text-center min-h-[900] h-[900] z-20'>
-          <p className='text-5xl text-white uppercase'>inspiration for travel by real people</p>
+          <p className='text-5xl text-white uppercase'>inspirações para viajar</p>
         </div>
         <div className='absolute w-full h-full bg-black/25 z-10'></div>
         <img src={Cover} alt="" className='max-h-[900px] z-0 bg-cover w-full' />
       </figure>
 
       <section className='p-4 max-w-[1024px] m-auto grid grid-cols-3 gap-4'>
-        {posts.map((post, index) => {
+        <h2 className='col-span-3 text-5xl text-center my-4'>Últimos Posts</h2>
+
+        {queryData.allMdx.nodes.map((post) => {
           return (
-            <Card key={index} {...post} />
+            <Card key={post.id}
+              title={post.frontmatter.title}
+              cover={post.frontmatter.cover}
+              date={post.frontmatter.date}
+              description={post.excerpt.replace('Introdução ', '')}
+              slug={post.frontmatter.slug}
+            />
           )
         })}
       </section>
-
-      <section>
-        {
-          queryData.allMdx.nodes.map(node => (
-            <li key={node.id}>
-              {node.frontmatter.title}
-            </li>
-          ))
-        }
-      </section>
-
     </Layout>
   )
 }
 
 export default IndexPage
-
-
 
 export const Head: HeadFC = () => <title>Trazler</title>
