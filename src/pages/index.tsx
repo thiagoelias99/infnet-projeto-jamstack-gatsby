@@ -9,7 +9,7 @@ import CardCover from '../images/card-cover-template.png'
 
 export const query = graphql`
     query {
-      allMdx(limit: 6) {
+      allMdx(limit: 10) {
         nodes {
           frontmatter {
             title
