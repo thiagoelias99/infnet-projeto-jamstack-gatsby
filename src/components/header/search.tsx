@@ -4,9 +4,9 @@ import { Input } from '../ui/input'
 
 export default function Search() {
   return (
-    <div className='flex flex-row gap-2'>
-      <img src={searchIcon} alt="" />
-      <Input type='text' className='border-none text-white italic bg-black w-[340px]' />
+    <div className='flex flex-row gap-2 h-full justify-center items-center'>
+      <img src={searchIcon} alt="" className='h-9'/>
+      <Input type='text' className='border-none text-black italic bg-white w-[220px]' />
     </div>
   )
 }
