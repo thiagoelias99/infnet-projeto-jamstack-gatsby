@@ -63,7 +63,7 @@ const SubscriptionForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} netlify netlify-honeypot="bot-field" name='subscriptions' className='flex flex-col gap-2'>
+    <form method='post' name='subscriptions' onSubmit={handleSubmit(onSubmit)} data-netlify="true" data-netlify-honeypot="bot-field" className='flex flex-col gap-2'>
       <input type="hidden" name="form-name" value="subscriptions" />
 
       <Input {...register("firstName", { required: true })} placeholder="First name" />
