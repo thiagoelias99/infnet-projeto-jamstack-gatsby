@@ -19,6 +19,7 @@ const SubscriptionForm = () => {
 
   //Type of form input data validation 
   const formValidationSchema = z.object({
+    "form-name": z.string().default('subscriptions'),
     firstName: z.string().min(2, { message: 'Nome muito curto' }),
     lastName: z.string().min(2, { message: 'Sobrenome muito curto' }),
     email: z.string().email({ message: 'Email inválido' }),
@@ -40,13 +41,31 @@ const SubscriptionForm = () => {
   )
   //Form submit handler
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
+
     console.log(data)
-    setShowAlert(true)
-    reset()
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ ...data })
+    })
+      .then(() => {
+        setShowAlert(true)
+        reset()
+      })
+      .catch(error => alert(error))
+  }
+
+  const encode = (data: FormInputs) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2'>
+    <form onSubmit={handleSubmit(onSubmit)} netlify netlify-honeypot="bot-field" name='subscriptions' className='flex flex-col gap-2'>
+      <input type="hidden" name="form-name" value="subscriptions" />
+
       <Input {...register("firstName", { required: true })} placeholder="First name" />
       <ErrorMessage message={errors.firstName?.message} />
 
