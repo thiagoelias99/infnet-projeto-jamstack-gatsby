@@ -68,6 +68,13 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
 
       <form method="post" name="subscriptions" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
         <input type="hidden" name="form-name" value="subscriptions" />
+        <input type="hidden" name="firstName" />
+        <input type="hidden" name="lastName" />
+        <input type="hidden" name="email" />
+        <input type="hidden" name="date" />
+        <input type="hidden" name="newPost" />
+        <input type="hidden" name="weeklyResume" />
+        <input type="hidden" name="monthlyResume" />
       </form>
     </Layout>
   )
