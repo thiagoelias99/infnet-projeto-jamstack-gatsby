@@ -1,11 +1,17 @@
 import React from 'react'
+import moment from 'moment'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
+
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+
 import ErrorMessage from '../error-message/ErrorMessage'
 import SimpleAlertDialogue from '../alert-dialog/SimpleAlertDialogue'
+import { Check } from 'lucide-react'
+import CheckboxWithLabel from '../checkbox-label/CheckboxWithLabel'
+import { Checkbox } from '../ui/checkbox'
 
 const SubscriptionForm = () => {
   //Alert Dialog
@@ -15,7 +21,11 @@ const SubscriptionForm = () => {
   const formValidationSchema = z.object({
     firstName: z.string().min(2, { message: 'Nome muito curto' }),
     lastName: z.string().min(2, { message: 'Sobrenome muito curto' }),
-    email: z.string().email({ message: 'Email inválido' })
+    email: z.string().email({ message: 'Email inválido' }),
+    date: z.string().default(moment().toISOString()),
+    newPost: z.boolean().default(true),
+    weeklyResume: z.boolean().default(true),
+    monthlyResume: z.boolean().default(true)
   })
 
   //Type of form result data
@@ -45,6 +55,16 @@ const SubscriptionForm = () => {
 
       <Input {...register("email", { required: true })} placeholder="Email" />
       <ErrorMessage message={errors.email?.message} />
+
+      <h3 className='pt-4'>O que você deseja receber?</h3>
+
+      {/* Sempre retornando true */}
+      <CheckboxWithLabel label='Novos posts' register={register} name='newPost' />
+      <ErrorMessage message={errors.newPost?.message} />
+      <CheckboxWithLabel label='Resumo semanal' register={register} name='weeklyResume' />
+      <ErrorMessage message={errors.weeklyResume?.message} />
+      <CheckboxWithLabel label='Resumo mensal' register={register} name='monthlyResume' />
+      <ErrorMessage message={errors.monthlyResume?.message} />
 
       <Button variant="default" type="submit">Inscrever-se</Button>
 
