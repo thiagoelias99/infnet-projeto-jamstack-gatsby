@@ -14,8 +14,8 @@ import SubscriptionForm from "./SubscriptionForm"
 export const SubscriptionDialog = () => {   
     return (
         <Dialog>
-            <DialogTrigger >
-                <Button variant="outline">Inscreva-se</Button>
+            <DialogTrigger asChild className="w-full md:w-1/3 order-1 md:order-2">
+                <Button variant="outline" className="w-full md:w-auto">Inscreva-se</Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>

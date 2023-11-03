@@ -7,7 +7,7 @@ interface SignProps {
 
 const Sign = ({ title, author }: SignProps) => {
   return (
-    <div>
+    <div className='w-full'>
       <p className='text-white text-l font-thin'>{title} <span className='font-bold uppercase'>{author}</span></p>
     </div>
   )
@@ -15,8 +15,7 @@ const Sign = ({ title, author }: SignProps) => {
 
 export default function SignContainer() {
   return (
-    <div className='flex flex-col'>
-      <Sign title='Designed by' author='XP Design' />
+    <div className='flex flex-col w-full md:w-1/3 justify-center items-start md:order-1 order-3'>
       <Sign title='Developed by' author='Thiago Elias' />
     </div>
   )

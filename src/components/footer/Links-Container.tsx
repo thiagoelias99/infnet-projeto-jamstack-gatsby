@@ -18,10 +18,12 @@ const CustomLink = ({ link, icon }: LinkProps) => {
 
 export default function LinksContainer() {
   return (
-    <nav className='list-none flex flex-row gap-2 justify-center items-center'>
-      <CustomLink icon={FacebookIcon} link='https://www.facebook.com/' />
-      <CustomLink icon={FacebookIcon} link='https://www.facebook.com/' />
-      <CustomLink icon={FacebookIcon} link='https://www.facebook.com/' />
+    <nav className='w-full md:w-1/3 order-2 md:order-3'>
+      <ul className='list-none flex flex-row gap-2 justify-center md:justify-end items-center'>
+        <CustomLink icon={FacebookIcon} link='https://www.facebook.com/' />
+        <CustomLink icon={FacebookIcon} link='https://www.facebook.com/' />
+        <CustomLink icon={FacebookIcon} link='https://www.facebook.com/' />
+      </ul>
     </nav>
   )
 }
