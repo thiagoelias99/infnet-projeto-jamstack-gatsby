@@ -19,7 +19,7 @@ const SubscriptionForm = () => {
 
   //Type of form input data validation 
   const formValidationSchema = z.object({
-    "form-name": z.string().default('subscriptions'),
+    "form-name": z.string(),
     firstName: z.string().min(2, { message: 'Nome muito curto' }),
     lastName: z.string().min(2, { message: 'Sobrenome muito curto' }),
     email: z.string().email({ message: 'Email inválido' }),
@@ -63,7 +63,7 @@ const SubscriptionForm = () => {
   }
 
   return (
-    <form method='post' name='subscriptions' onSubmit={handleSubmit(onSubmit)} data-netlify="true" data-netlify-honeypot="bot-field" className='flex flex-col gap-2'>
+    <form method="post" name="subscriptions" onSubmit={handleSubmit(onSubmit)} data-netlify="true" data-netlify-honeypot="bot-field" className='flex flex-col gap-2'>
       <input type="hidden" name="form-name" value="subscriptions" />
 
       <Input {...register("firstName", { required: true })} placeholder="First name" />
