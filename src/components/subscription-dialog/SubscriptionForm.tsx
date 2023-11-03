@@ -5,8 +5,11 @@ import * as z from 'zod'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import ErrorMessage from '../error-message/ErrorMessage'
+import SimpleAlertDialogue from '../alert-dialog/SimpleAlertDialogue'
 
 const SubscriptionForm = () => {
+  //Alert Dialog
+  const [showAlert, setShowAlert] = React.useState(false)
 
   //Type of form input data validation 
   const formValidationSchema = z.object({
@@ -28,6 +31,7 @@ const SubscriptionForm = () => {
   //Form submit handler
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     console.log(data)
+    setShowAlert(true)
     reset()
   }
 
@@ -43,6 +47,8 @@ const SubscriptionForm = () => {
       <ErrorMessage message={errors.email?.message} />
 
       <Button variant="default" type="submit">Inscrever-se</Button>
+
+      <SimpleAlertDialogue message="Você foi inscrito com sucesso!" open={showAlert} setOpen={setShowAlert} />
     </form>
   )
 }

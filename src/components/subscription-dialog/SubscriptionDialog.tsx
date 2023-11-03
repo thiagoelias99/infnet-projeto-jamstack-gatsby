@@ -11,8 +11,7 @@ import React from 'react'
 import { Button } from "../ui/button"
 import SubscriptionForm from "./SubscriptionForm"
 
-export const SubscriptionDialog = () => {
-
+export const SubscriptionDialog = () => {   
     return (
         <Dialog>
             <DialogTrigger >
@@ -24,7 +23,7 @@ export const SubscriptionDialog = () => {
                     <DialogDescription>Você será notificado sobre novas postagens</DialogDescription>
                 </DialogHeader>
                 <SubscriptionForm />
-            </DialogContent>
+            </DialogContent>            
         </Dialog>
     )
 }
