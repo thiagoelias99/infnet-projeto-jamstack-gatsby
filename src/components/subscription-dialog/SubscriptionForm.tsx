@@ -19,7 +19,7 @@ const SubscriptionForm = () => {
 
   //Type of form input data validation 
   const formValidationSchema = z.object({
-    "form-name": z.string(),
+    "form-name": z.string().default('subscriptions'),
     firstName: z.string().min(2, { message: 'Nome muito curto' }),
     lastName: z.string().min(2, { message: 'Sobrenome muito curto' }),
     email: z.string().email({ message: 'Email inválido' }),

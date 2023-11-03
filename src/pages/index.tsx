@@ -65,6 +65,10 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           )
         })}
       </section>
+
+      <form method="post" name="subscriptions" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="subscriptions" />
+      </form>
     </Layout>
   )
 }
