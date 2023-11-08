@@ -15,9 +15,9 @@ const BlogCard = ({ title, hero, date, excerpt, slug }: IBlogCard) => {
             <div className='flex flex-row justify-center items-center gap-4 h-44 md:h-32 p-2 hover:bg-slate-100'>
                 {hero}
                 <div className='flex flex-col justify-start items-start h-full'>
-                    <p className='text-xs md:text-sm text-slate-400 italic '>{date}</p>
+                    <p className='text-xs md:text-sm text-slate-700 italic '>{date}</p>
                     <h3 className='text-base md:text-xl font-semibold'>{title}</h3>
-                    <p className='text-sm md:text-base mt-2 flex-1 text-slate-700'>{excerpt}</p>
+                    <p className='text-sm md:text-base mt-2 flex-1 text-slate-800'>{excerpt}</p>
                 </div>
             </div>
         </Link>
