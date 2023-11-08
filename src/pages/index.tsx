@@ -2,7 +2,11 @@ import * as React from "react"
 import { graphql, type HeadFC, type PageProps } from "gatsby"
 import Layout from "@/components/layout"
 import Card from '@/components/card'
+<<<<<<< Updated upstream
 import { StaticImage } from "gatsby-plugin-image"
+=======
+import SubscriptionForm from "@/components/subscription-form"
+>>>>>>> Stashed changes
 
 export const query = graphql`
     query {
@@ -68,6 +72,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
               date={post.frontmatter.date}
               description={post.excerpt.replace('Introdução ', '')}
               slug={post.frontmatter.slug}
+<<<<<<< Updated upstream
               />
             )
           })}
@@ -84,6 +89,16 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
         <input type="hidden" name="weeklyResume" />
         <input type="hidden" name="monthlyResume" />
       </form>
+=======
+            />
+          )
+        })}
+      </section>
+
+
+      <SubscriptionForm />
+
+>>>>>>> Stashed changes
     </Layout>
 
   )
