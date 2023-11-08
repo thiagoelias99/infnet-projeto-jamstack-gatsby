@@ -2,21 +2,27 @@ import * as React from "react"
 import { graphql, type HeadFC, type PageProps } from "gatsby"
 import Layout from "@/components/layout"
 import Card from '@/components/card'
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
 export const query = graphql`
     query {
-      allMdx(limit: 6, sort: {frontmatter: {date: DESC}}) {
+      allMdx(sort: {frontmatter: {date: DESC}}, limit: 6) {
         nodes {
           frontmatter {
             title
             slug
             date(locale: "Pt", formatString: "MMMM D, YYYY")
             hero
+            hero_image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
           }
           id
           excerpt
         }
+        totalCount
       }
     }
 `
@@ -29,10 +35,16 @@ interface IQuery {
         slug: string
         date: string
         hero: string
+        hero_image: {
+          childImageSharp: {
+            gatsbyImageData: any
+          }
+        }
       }
       id: string
       excerpt: string
     }[]
+    totalCount: number
   }
 }
 
@@ -62,7 +74,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
           return (
             <Card key={post.id}
               title={post.frontmatter.title}
-              cover={post.frontmatter.hero}
+              cover={<GatsbyImage image={post.frontmatter.hero_image.childImageSharp.gatsbyImageData} alt="placeholder" className='w-full h-[209px]' objectFit='fill' />}
               date={post.frontmatter.date}
               description={post.excerpt.replace('Introdução ', '')}
               slug={post.frontmatter.slug}

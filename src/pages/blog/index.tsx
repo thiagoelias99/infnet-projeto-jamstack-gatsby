@@ -1,6 +1,7 @@
 import BlogCard from '@/components/blog-card'
 import Layout from '@/components/layout'
 import { HeadFC, PageProps, graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 
 export const query = graphql`
@@ -12,6 +13,11 @@ export const query = graphql`
                 slug
                 date(locale: "Pt", formatString: "MMMM D, YYYY")
                 hero
+                hero_image {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
                 }
                 id
                 excerpt
@@ -29,6 +35,11 @@ interface IQuery {
                 slug: string
                 date: string
                 hero: string
+                hero_image: {
+                    childImageSharp: {
+                        gatsbyImageData: any
+                    }
+                }
             }
             id: string
             excerpt: string
@@ -53,7 +64,7 @@ const Blog: React.FC<PageProps> = ({ data }) => {
                                 key={post.id}
                                 date={post.frontmatter.date}
                                 excerpt={post.excerpt}
-                                hero={post.frontmatter.hero}
+                                hero={<GatsbyImage image={post.frontmatter.hero_image.childImageSharp.gatsbyImageData} alt="" className='h-full w-36 rounded-md' />}
                                 slug={post.frontmatter.slug}
                                 title={post.frontmatter.title}
                             />

@@ -1,7 +1,9 @@
+import { GatsbyImage } from 'gatsby-plugin-image'
+
 export interface IPost {
     title: string
     date: string
     description: string
-    cover: string
+    cover: any
     slug: string
 }
