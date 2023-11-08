@@ -2,11 +2,7 @@ import * as React from "react"
 import { graphql, type HeadFC, type PageProps } from "gatsby"
 import Layout from "@/components/layout"
 import Card from '@/components/card'
-<<<<<<< Updated upstream
 import { StaticImage } from "gatsby-plugin-image"
-=======
-import SubscriptionForm from "@/components/subscription-form"
->>>>>>> Stashed changes
 
 export const query = graphql`
     query {
@@ -46,38 +42,34 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
 
   return (
     <Layout>
-      <main>
-        <figure className='flex max-h-[900px] relative mt-32 md:mt-24'>
-          <div className='w-full absolute top-[40%] text-center z-20'>
-            <p className='text-2xl md:text-5xl text-white uppercase'>inspirações para viajar</p>
-          </div>
-          <div className='absolute w-full h-full bg-black/25 z-10'></div>
-          {/* <img src={Cover} alt="" className='max-h-[900px] z-0 bg-cover w-full' /> */}
-          <StaticImage
-            src='../images/home-cover.png'
-            alt='mountains'
-            className='max-h-[900px] z-0 bg-cover w-full'
-            placeholder="blurred"
-          />
-        </figure>
+      <figure className='flex max-h-[900px] relative mt-32 md:mt-24'>
+        <div className='w-full absolute top-[40%] text-center z-20'>
+          <p className='text-2xl md:text-5xl text-white uppercase'>inspirações para viajar</p>
+        </div>
+        <div className='absolute w-full h-full bg-black/25 z-10'></div>
+        <StaticImage
+          src='../images/home-cover.png'
+          alt='mountains'
+          className='max-h-[900px] z-0 bg-cover w-full'
+          placeholder="blurred"
+        />
+      </figure>
 
-        <section className='p-4 max-w-[1024px] m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-10 gap-y-10'>
-          <h2 className='col-span-1 md:col-span-2 lg:col-span-3 text-3xl md:text-4xl lg:text-5xl text-center mt-4'>Últimos Posts</h2>
+      <section className='p-4 max-w-[1024px] m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-10 gap-y-10'>
+        <h2 className='col-span-1 md:col-span-2 lg:col-span-3 text-3xl md:text-4xl lg:text-5xl text-center mt-4'>Últimos Posts</h2>
 
-          {queryData.allMdx.nodes.map((post) => {
-            return (
-              <Card key={post.id}
+        {queryData.allMdx.nodes.map((post) => {
+          return (
+            <Card key={post.id}
               title={post.frontmatter.title}
               cover={post.frontmatter.hero}
               date={post.frontmatter.date}
               description={post.excerpt.replace('Introdução ', '')}
               slug={post.frontmatter.slug}
-<<<<<<< Updated upstream
-              />
-            )
-          })}
-        </section>
-      </main>
+            />
+          )
+        })}
+      </section>
 
       <form method="post" name="subscriptions" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
         <input type="hidden" name="form-name" value="subscriptions" />
@@ -89,18 +81,7 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
         <input type="hidden" name="weeklyResume" />
         <input type="hidden" name="monthlyResume" />
       </form>
-=======
-            />
-          )
-        })}
-      </section>
-
-
-      <SubscriptionForm />
-
->>>>>>> Stashed changes
     </Layout>
-
   )
 }
 
