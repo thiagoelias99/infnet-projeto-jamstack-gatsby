@@ -16,7 +16,7 @@ const Sign = ({ title, author }: SignProps) => {
 export default function SignContainer() {
   return (
     <div className='flex flex-col w-full md:w-1/3 justify-center items-start md:order-1 order-3'>
-      <Sign title='Developed by' author='Thiago Elias' />
+      <Sign title='Desenvolvido por' author='Thiago Elias' />
     </div>
   )
 }

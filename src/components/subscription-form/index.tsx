@@ -29,9 +29,9 @@ const SubscriptionForm = () => {
     <div className='w-screen h-screen flex justify-center items-center fixed z-10'>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2'>
         {/* Use 'register' to refer form fields */}
-        <input {...register("firstName", { required: true })} placeholder="First name" />
+        <input {...register("firstName", { required: true })} placeholder="Nome" />
         <span>{errors.firstName?.message}</span>
-        <input {...register("lastName", { required: true })} placeholder="Last name" />
+        <input {...register("lastName", { required: true })} placeholder="Sobrenome" />
         <span>{errors.lastName?.message}</span>
         <input {...register("email", { required: true })} placeholder="Email" />
         <span>{errors.email?.message}</span>
