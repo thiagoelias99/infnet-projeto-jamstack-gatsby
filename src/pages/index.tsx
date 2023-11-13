@@ -12,7 +12,6 @@ export const query = graphql`
             title
             slug
             date(locale: "Pt", formatString: "MMMM D, YYYY")
-            hero
             hero_image {
               childImageSharp {
                 gatsbyImageData
@@ -34,7 +33,6 @@ interface IQuery {
         title: string
         slug: string
         date: string
-        hero: string
         hero_image: {
           childImageSharp: {
             gatsbyImageData: any
