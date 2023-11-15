@@ -4,6 +4,7 @@ import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import Layout from '@/components/layout'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Seo from '@/components/seo'
 
 const MyH1 = (props: React.HTMLProps<HTMLHeadingElement>) => <h1 className='text-black text-3xl md:text-4xl lg:text-5xl my-4 text-center max-w-full' {...props} />
 const MyH2 = (props: React.HTMLProps<HTMLHeadingElement>) => <h2 className='text-black text-xl font-bold md:text-2xl lg:text-3xl mt-16 mb-4 p-4 text-center w-full bg-slate-100 rounded' {...props} />
@@ -50,6 +51,7 @@ export const query = graphql`
           }
         }
       }
+      excerpt
     }
   }
 `
@@ -65,6 +67,7 @@ interface IQuery {
         }
       }
     }
+    excerpt: string
   }
 }
 
@@ -84,4 +87,6 @@ export default function Post({ data, children }: IProps) {
   )
 }
 
-export const Head = ({ data }: IProps) => <><title>{data.mdx.frontmatter.title}</title></>
+// export const Head = ({ data }: IProps) => <><title>{data.mdx.frontmatter.title}</title></>
+
+export const Head = ({ data }: IProps) => <Seo title={data.mdx.frontmatter.title} description={data.mdx.excerpt} />

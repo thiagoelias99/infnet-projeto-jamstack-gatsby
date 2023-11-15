@@ -15,6 +15,13 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     "gatsby-plugin-postcss",
     'gatsby-plugin-mdx',
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        sitemap: `https://trazler-telias.netlify.app/sitemap-index.xml`
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -3,6 +3,8 @@ import { graphql, type HeadFC, type PageProps } from "gatsby"
 import Layout from "@/components/layout"
 import Card from '@/components/card'
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import Seo from "@/components/seo"
+
 
 export const query = graphql`
     query {
@@ -97,4 +99,8 @@ const IndexPage: React.FC<PageProps> = ({ data }) => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Trazler</title>
+export const Head: HeadFC = () => {
+  return (
+    <Seo title="Trazler" description="Trazler Home Page" />
+  )
+}

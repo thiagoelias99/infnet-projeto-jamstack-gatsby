@@ -1,5 +1,6 @@
 import BlogCard from '@/components/blog-card'
 import Layout from '@/components/layout'
+import Seo from '@/components/seo'
 import { HeadFC, PageProps, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
@@ -77,4 +78,4 @@ const Blog: React.FC<PageProps> = ({ data }) => {
 
 export default Blog
 
-export const Head: HeadFC = () => <title>Trazler - Blog</title>
+export const Head: HeadFC = () => <Seo title='Blog' description='Blog da Trazler' />
