@@ -22,6 +22,12 @@ Desenvolvimento Web Full Stack***](https://posgraduacao.infnet.edu.br/ead/pos-gr
 ## Deploy da aplicação
 [Link Trazler no Netlify](https://trazler-telias.netlify.app/)
 
+## Teste de Performance do LightHouse
+<!-- ![resultado teste de performance](./assets/lighthouse-performance-test.png) -->
+<p align="center">
+<img src="./assets/lighthouse-performance-test.png" width="520px"/>
+</p>
+
 ## Instalação do Projeto
 ### Requerimentos
 [Node.js](https://nodejs.org/en)
